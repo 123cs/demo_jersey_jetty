@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* demo.App
+web: java $JAVA_OPTS -cp target/saasdemo123-jar-with-dependencies.jar demo.App
