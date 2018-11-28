@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/* demo.App
+web: java -cp target/saasdemo123-jar-with-dependencies.jar demo.App
