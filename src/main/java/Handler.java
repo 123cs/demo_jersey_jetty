@@ -7,17 +7,25 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/note")
+@Path("/")
 public class Handler {
 
     static List<Note> listNote = new ArrayList<Note>();
 
     @GET
-    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String DemoGet() {
+        System.out.println("GET METHOD: Get Note List");
+        return "Demo APP";
+    }
+
+
+    @GET
+    @Path("/note/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNoteById(@PathParam("id") String id) {
         System.out.println("GET METHOD: Get Note By Id " + id);
-        if(id == null || id.trim().length() == 0) {
+        if (id == null || id.trim().length() == 0) {
             return Response.serverError().entity("ID cannot be blank").build();
         }
         for (int i = 0; i < listNote.size(); i++) {
@@ -29,6 +37,7 @@ public class Handler {
     }
 
     @GET
+    @Path("/note")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNoteList() {
         System.out.println("GET METHOD: Get Note List");
@@ -36,21 +45,20 @@ public class Handler {
     }
 
     @GET
-    @Path("/search")
+    @Path("/note/search")
     @Produces(MediaType.APPLICATION_JSON)
     public Response searchNotesByCreatedBy(
-            @DefaultValue("")   @QueryParam("created_by")   String user,
-            @DefaultValue("")   @QueryParam("content")      String content,
-            @DefaultValue("-1") @QueryParam("from_date")    long from
-            ) {
-        System.out.println("GET METHOD: Search Notes " + user + " " +  content + " " +from);
+            @DefaultValue("") @QueryParam("created_by") String user,
+            @DefaultValue("") @QueryParam("content") String content,
+            @DefaultValue("-1") @QueryParam("from_date") long from
+    ) {
+        System.out.println("GET METHOD: Search Notes " + user + " " + content + " " + from);
         List<Note> result = new ArrayList<Note>();
         for (int i = 0; i < listNote.size(); i++) {
             Note currentNote = listNote.get(i);
             if ((user.trim().length() == 0 || currentNote.getCreated_by().equalsIgnoreCase(user)) &&
-                (content.trim().length() == 0 || currentNote.getContent().equalsIgnoreCase(content)) &&
-                (currentNote.getCreated_date() > from))
-            {
+                    (content.trim().length() == 0 || currentNote.getContent().equalsIgnoreCase(content)) &&
+                    (currentNote.getCreated_date() > from)) {
                 result.add(listNote.get(i));
             }
         }
@@ -61,6 +69,7 @@ public class Handler {
     }
 
     @POST
+    @Path("/note")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createNote(String body) {
@@ -71,19 +80,18 @@ public class Handler {
             note = gson.fromJson(body, Note.class);
             listNote.add(note);
             return Response.ok(new Gson().toJson(note)).build();
-        }
-        catch (JsonParseException e) {
+        } catch (JsonParseException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Bad request: " + body).build();
         }
     }
 
     @PUT
-    @Path("/{id}")
+    @Path("/note/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateNote(@PathParam("id") String id, String body) {
         System.out.println("PUT METHOD: Update Note By Id " + id + " with body \n" + body);
-        if(id == null || id.trim().length() == 0) {
+        if (id == null || id.trim().length() == 0) {
             return Response.serverError().entity("ID cannot be blank").build();
         }
         try {
@@ -97,18 +105,17 @@ public class Handler {
                 }
             }
             return Response.status(Response.Status.NOT_FOUND).entity("Entity not found for ID: " + id).build();
-        }
-        catch (JsonParseException e) {
+        } catch (JsonParseException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Bad request: " + body).build();
         }
     }
 
     @DELETE
-    @Path("/{id}")
+    @Path("/note/{id}")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteNote(@PathParam("id") String id) {
         System.out.println("DELETE METHOD: Delete Note By Id" + id);
-        if(id == null || id.trim().length() == 0) {
+        if (id == null || id.trim().length() == 0) {
             return Response.serverError().entity("ID cannot be blank").build();
         }
         for (int i = 0; i < listNote.size(); i++) {
