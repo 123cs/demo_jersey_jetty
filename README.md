@@ -2,7 +2,7 @@
 
 This repo is an example of a RESTful API using Jetty & Jersey.
 
-# Note
+# demo.Note
   - id
   - content
   - created_by
@@ -11,7 +11,7 @@ This repo is an example of a RESTful API using Jetty & Jersey.
   - lastupdated_date
 
 # API Instruction
-- Create a new Note:
+- Create a new demo.Note:
 
   POST method to /note
   
@@ -22,15 +22,15 @@ This repo is an example of a RESTful API using Jetty & Jersey.
   Body
   
       {
-        "content" : "Note content",
+        "content" : "demo.Note content",
         "created_by" : "username"
       }
 
-- Get Note by Id
+- Get demo.Note by Id
 
   GET method to /note/:id
 
-- Get all Note
+- Get all demo.Note
 
   GET method to /note
 
@@ -44,15 +44,15 @@ This repo is an example of a RESTful API using Jetty & Jersey.
     + from (long value only
     + content
 
-- Edit Note by Id
+- Edit demo.Note by Id
 
   PUT method to /note/:id
   
       {
-        "content" : "Note content",
+        "content" : "demo.Note content",
         "lastupdated_by" : "username"
       }
 
-- Delete Note By Id
+- Delete demo.Note By Id
 
   DELETE method to /note/:id
