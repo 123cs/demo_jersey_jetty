@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/saasdemo123-jar-with-dependencies.jar demo.App
+web: java $JAVA_OPTS -jar target/saasdemo123-jar-with-dependencies.jar --port -Dserver.port=$PORT
