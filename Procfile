@@ -1,1 +1,1 @@
-worker: java $JAVA_OPTS -jar target/saasdemo123-jar-with-dependencies.jar demo.App
+worker: java $JAVA_OPTS -Dserver.port=$PORT -jar target/saasdemo123-jar-with-dependencies.jar demo.App
