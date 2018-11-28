@@ -45,7 +45,6 @@
             <version>LATEST</version>
         </dependency>
     </dependencies>
-
     <build>
         <finalName>saasdemo123</finalName>
         <plugins>
@@ -55,8 +54,6 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>-->
-                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>demo.App</mainClass>
                         </manifest>
                     </archive>
@@ -82,21 +79,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--&lt;!&ndash; Build an executable JAR &ndash;&gt;-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-jar-plugin</artifactId>-->
-                <!--<version>3.1.0</version>-->
-                <!--<configuration>-->
-                    <!--<archive>-->
-                        <!--<manifest>-->
-                            <!--<addClasspath>true</addClasspath>-->
-                            <!--<classpathPrefix>lib/</classpathPrefix>-->
-                            <!--<mainClass>demo.App</mainClass>-->
-                        <!--</manifest>-->
-                    <!--</archive>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 </project>

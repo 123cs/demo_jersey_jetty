@@ -1,1 +1,1 @@
-web: java -jar target/saasdemo123.jar
+web: java -jar target/saasdemo123-jar-with-dependencies.jar
