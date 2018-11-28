@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/saasdemo123.jar --port 8080 target/saasdemo123.jar
+web: java $JAVA_OPTS -jar target/saasdemo123.jar --port 8080
