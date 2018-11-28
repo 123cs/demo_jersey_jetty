@@ -55,6 +55,8 @@
                 <configuration>
                     <archive>
                         <manifest>
+                            <addClasspath>true</addClasspath>-->
+                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>demo.App</mainClass>
                         </manifest>
                     </archive>
